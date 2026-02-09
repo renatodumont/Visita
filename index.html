@@ -1,190 +1,182 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programa de Caligrafia - 6º Ano</title>
+    <title>Treino de Caligrafia Cursiva - 6º Ano</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Homemade+Apple&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Dancing+Script:wght@400;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #f8fafc;
         }
 
-        /* Pauta de Caligrafia Proporcional */
+        .cursiva {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Configuração da Pauta conforme solicitado */
         .pauta-container {
             display: flex;
             flex-direction: column;
-            gap: 12px; 
-            margin-top: 1rem;
+            gap: 12px;
+            margin-top: 10px;
         }
 
         .pauta-linha {
             position: relative;
-            height: 60px; /* Aumentada a altura total para acomodar o centro maior */
-            border-top: 2px solid #2563eb; /* Azul superior */
-            border-bottom: 2px solid #2563eb; /* Azul inferior */
-            /* Zona central aumentada: Linhas internas cinzas */
+            height: 85px; /* Altura total para acomodar a zona central grande */
+            border-top: 2.5px solid #1d4ed8; /* Linha Superior Azul */
+            border-bottom: 2.5px solid #1d4ed8; /* Linha Inferior Azul */
+            /* Zona central ampliada (ocupando aprox. 60% da área) */
             background: linear-gradient(
                 to bottom,
                 transparent 0%,
-                transparent 30%,
-                #cbd5e1 30%,
-                #cbd5e1 32%,
-                transparent 32%,
-                transparent 68%,
-                #cbd5e1 68%,
-                #cbd5e1 70%,
-                transparent 70%
+                transparent 20%,
+                #94a3b8 20%,
+                #94a3b8 22%,
+                transparent 22%,
+                transparent 78%,
+                #94a3b8 78%,
+                #94a3b8 80%,
+                transparent 80%
             );
             width: 100%;
+            display: flex;
+            align-items: center;
         }
 
+        /* Marcador de ponto central */
         .pauta-linha::before {
             content: '•';
             position: absolute;
             left: 8px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 20px;
-            color: #94a3b8;
+            font-size: 24px;
+            color: #64748b;
             font-weight: bold;
         }
 
-        /* Estilo para Letras Pontilhadas (Tracing) */
-        .dotted-text {
-            font-family: 'Arial', sans-serif;
-            font-size: 32px;
-            letter-spacing: 12px;
-            color: #e2e8f0;
-            border-bottom: 1px dashed #cbd5e1;
-            display: inline-block;
-            line-height: 1.5;
-            position: relative;
-            font-weight: 100;
-            text-decoration: underline dotted #94a3b8;
-        }
-
-        .tracing-box {
-            font-family: "Times New Roman", serif;
-            font-size: 38px;
-            color: #d1d5db;
-            letter-spacing: 15px;
-            display: flex;
-            align-items: center;
-            height: 60px;
-            padding-left: 40px;
+        /* Estilo para as letras pontilhadas de cobrir */
+        .pontilhado {
+            font-family: 'Dancing Script', cursive;
+            font-size: 52px;
+            color: #e2e8f0; /* Cor clara para ser coberta */
+            letter-spacing: 14px;
+            padding-left: 45px;
+            line-height: 1;
             user-select: none;
+            font-weight: 400;
         }
 
-        /* Formas educativas (SVG) */
-        .shape-exercise {
-            stroke: #d1d5db;
-            stroke-width: 2;
-            fill: none;
-            stroke-dasharray: 4;
+        /* Estilo para os exercícios do vídeo */
+        .pattern-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 42px;
+            color: #94a3b8;
+            opacity: 0.6;
+            letter-spacing: 2px;
+            padding-left: 45px;
         }
 
         @media print {
             .no-print { display: none !important; }
             body { background-color: white; padding: 0; }
-            .card { box-shadow: none !important; border: 1px solid #eee !important; page-break-inside: avoid; margin-bottom: 20px !important; }
+            .card { box-shadow: none !important; border: 1px solid #eee !important; page-break-inside: avoid; margin-bottom: 15px !important; }
             .pauta-linha { 
-                border-top: 2px solid #1e40af !important; 
-                border-bottom: 2px solid #1e40af !important;
+                border-top: 2.5px solid #1d4ed8 !important; 
+                border-bottom: 2.5px solid #1d4ed8 !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
         }
     </style>
 </head>
-<body class="p-4 md:p-8 text-slate-900">
+<body class="p-4 md:p-8">
 
-    <div class="max-w-4xl mx-auto container">
+    <div class="max-w-4xl mx-auto">
         
-        <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
+        <!-- Cabeçalho de Navegação -->
+        <header class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
             <div>
-                <h1 class="text-3xl font-bold text-slate-800">Treino de Caligrafia Personalizado</h1>
-                <p class="text-slate-600 font-medium">Foco em Coordenação Motora e Traçado (A-F)</p>
+                <h1 class="text-2xl font-bold text-slate-800">Treino de Caligrafia Cursiva</h1>
+                <p class="text-slate-500">Inspirado em técnicas de fluidez e ritmo motor</p>
             </div>
-            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
                 </svg>
-                Imprimir Material
+                Imprimir Fichas
             </button>
         </header>
 
-        <nav class="mb-6 flex gap-4 no-print">
-            <button onclick="switchWeek(1)" id="btn-w1" class="px-4 py-2 rounded-md font-bold transition-colors bg-blue-600 text-white border-2 border-blue-600">Semana 1: Traçado e Base</button>
-            <button onclick="switchWeek(2)" id="btn-w2" class="px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200">Semana 2: Velocidade e Texto</button>
+        <nav class="mb-6 flex gap-3 no-print">
+            <button onclick="changeWeek(1)" id="btn1" class="px-4 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md">Semana 1: Traçado e Ritmo</button>
+            <button onclick="changeWeek(2)" id="btn2" class="px-4 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">Semana 2: Fluidez de Texto</button>
         </nav>
 
-        <div id="week1" class="space-y-8">
-            <!-- SEÇÃO DE COBRIR LETRAS -->
-            <div class="bg-white p-6 rounded-xl shadow-sm card">
-                <h2 class="text-xl font-bold text-blue-800 mb-4">Parte 1: Cubra as Letras (A até F)</h2>
-                <p class="text-sm text-slate-500 mb-6 italic italic">Instrução: Siga o movimento das setas imaginárias. As maiúsculas tocam a linha azul superior.</p>
+        <!-- CONTEÚDO SEMANA 1 -->
+        <div id="week1" class="space-y-6">
+            
+            <!-- PARTE 1: ALFABETO PONTILHADO -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm card">
+                <h2 class="text-lg font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-3">1. Cobrir Letras Cursivas (A até F)</h2>
+                <p class="text-sm text-slate-400 mb-4 italic">Foca na zona do ponto central. Letras maiúsculas tocam a linha azul superior.</p>
+                <div class="space-y-1">
+                    <div class="pauta-linha"><div class="pontilhado">Aa Aa Aa Aa Aa</div></div>
+                    <div class="pauta-linha"><div class="pontilhado">Bb Bb Bb Bb Bb</div></div>
+                    <div class="pauta-linha"><div class="pontilhado">Cc Cc Cc Cc Cc</div></div>
+                    <div class="pauta-linha"><div class="pontilhado">Dd Dd Dd Dd Dd</div></div>
+                    <div class="pauta-linha"><div class="pontilhado">Ee Ee Ee Ee Ee</div></div>
+                    <div class="pauta-linha"><div class="pontilhado">Ff Ff Ff Ff Ff</div></div>
+                </div>
+            </div>
+
+            <!-- PARTE 2: EXERCÍCIOS DE RITMO (DO VÍDEO) -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm card page-break">
+                <h2 class="text-lg font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-3">2. Padrões de Fluidez (Inspirado no Vídeo)</h2>
+                <p class="text-sm text-slate-400 mb-4 italic">Faz o movimento sem parar a mão. Imagina que a caneta está a dançar.</p>
                 
-                <div class="space-y-2">
-                    <div class="pauta-linha flex items-center"><div class="tracing-box">Aa Aa Aa Aa Aa Aa</div></div>
-                    <div class="pauta-linha flex items-center"><div class="tracing-box">Bb Bb Bb Bb Bb Bb</div></div>
-                    <div class="pauta-linha flex items-center"><div class="tracing-box">Cc Cc Cc Cc Cc Cc</div></div>
-                    <div class="pauta-linha flex items-center"><div class="tracing-box">Dd Dd Dd Dd Dd Dd</div></div>
-                    <div class="pauta-linha flex items-center"><div class="tracing-box">Ee Ee Ee Ee Ee Ee</div></div>
-                    <div class="pauta-linha flex items-center"><div class="tracing-box">Ff Ff Ff Ff Ff Ff</div></div>
+                <div class="space-y-1">
+                    <div class="pauta-linha"><div class="pattern-text">a - oooooooooooo</div></div>
+                    <div class="pauta-linha"><div class="pattern-text">b - llllllllllll</div></div>
+                    <div class="pauta-linha"><div class="pattern-text">c - cccccccccccc</div></div>
+                    <div class="pauta-linha"><div class="pattern-text">d - oooooooooooo</div></div>
+                    <div class="pauta-linha"><div class="pattern-text">f - ffffffffffff</div></div>
                 </div>
             </div>
 
-            <!-- FORMAS EDUCATIVAS -->
-            <div class="bg-white p-6 rounded-xl shadow-sm card">
-                <h2 class="text-xl font-bold text-blue-800 mb-4">Parte 2: Aquecimento de Formas (Coordenação)</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase mb-2">Ondas (Base para 'a', 'c', 'd')</p>
-                        <div class="pauta-linha">
-                            <svg width="100%" height="100%" class="shape-exercise">
-                                <path d="M 40 45 Q 60 20 80 45 T 120 45 T 160 45 T 200 45 T 240 45 T 280 45 T 320 45" />
-                            </svg>
-                        </div>
+            <!-- PARTE 3: FORMAS EDUCATIVAS -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm card">
+                <h2 class="text-lg font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-3">3. Aquecimento Motor</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="pauta-linha">
+                        <svg width="100%" height="100%" class="opacity-30 stroke-slate-600" style="stroke-width: 2; fill: none; stroke-dasharray: 4;">
+                            <path d="M 50 65 Q 70 25 90 65 T 130 65 T 170 65 T 210 65 T 250 65" />
+                        </svg>
                     </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase mb-2">Laços Superiores (Base para 'b', 'f')</p>
-                        <div class="pauta-linha">
-                            <svg width="100%" height="100%" class="shape-exercise">
-                                <path d="M 40 40 C 40 10 70 10 70 40 C 70 40 100 10 100 40 C 100 40 130 10 130 40" />
-                            </svg>
-                        </div>
+                    <div class="pauta-linha">
+                        <svg width="100%" height="100%" class="opacity-30 stroke-slate-600" style="stroke-width: 2; fill: none; stroke-dasharray: 4;">
+                            <path d="M 50 65 C 50 15 90 15 90 65 S 130 15 130 65 S 170 15 170 65" />
+                        </svg>
                     </div>
-                </div>
-            </div>
-
-            <!-- TEXTO DE APLICAÇÃO -->
-            <div class="bg-white p-6 rounded-xl shadow-sm card page-break">
-                <h2 class="text-xl font-bold text-blue-800 mb-4">Parte 3: Aplicação em Palavras</h2>
-                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 font-serif text-lg italic">
-                    "Abelha, Baleia, Coelho, Dado, Elefante, Foca."
-                </div>
-                <div class="pauta-container">
-                    <div class="pauta-linha"></div>
-                    <div class="pauta-linha"></div>
-                    <div class="pauta-linha"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Semana 2 -->
-        <div id="week2" class="space-y-8 hidden">
-            <div class="bg-white p-6 rounded-xl shadow-sm card">
-                <h2 class="text-xl font-bold text-green-800 mb-4">Semana 2: Fluidez e Rapidez</h2>
-                <p class="text-sm text-slate-500 mb-4 italic italic">Agora que o traçado base está firme, vamos focar em não tirar a caneta do papel.</p>
-                
-                <div class="mb-8">
-                    <h3 class="font-bold text-slate-700 mb-2">Desafio de Velocidade (História)</h3>
-                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 font-serif italic text-lg mb-4">
-                        "A escrita cuneiforme foi uma das primeiras do mundo, criada na Mesopotâmia."
+        <!-- CONTEÚDO SEMANA 2 -->
+        <div id="week2" class="space-y-6 hidden">
+            <div class="bg-white p-6 rounded-2xl shadow-sm card">
+                <h2 class="text-lg font-bold text-green-800 mb-2 border-l-4 border-green-600 pl-3">Semana 2: Aplicação e Velocidade</h2>
+                <p class="text-sm text-slate-400 mb-6 italic">Agora vamos escrever frases completas sem tirar a caneta do papel entre as letras de cada palavra.</p>
+
+                <div class="mb-10">
+                    <h3 class="font-bold text-slate-700 mb-3">História: Escrita Cuneiforme</h3>
+                    <div class="bg-green-50 p-4 rounded-xl cursiva text-3xl text-slate-700 mb-4 opacity-70">
+                        A escrita cursiva aumenta a velocidade de pensamento.
                     </div>
                     <div class="pauta-container">
                         <div class="pauta-linha"></div>
@@ -194,9 +186,9 @@
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-slate-700 mb-2">Desafio de Organização (Geografia)</h3>
-                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 font-serif italic text-lg mb-4">
-                        "O Brasil possui seis grandes biomas: Amazônia, Cerrado, Caatinga, Pantanal, Mata Atlântica e Pampa."
+                    <h3 class="font-bold text-slate-700 mb-3">Geografia: Biomas do Brasil</h3>
+                    <div class="bg-green-50 p-4 rounded-xl cursiva text-3xl text-slate-700 mb-4 opacity-70">
+                        A Amazónia é o maior bioma brasileiro.
                     </div>
                     <div class="pauta-container">
                         <div class="pauta-linha"></div>
@@ -207,28 +199,29 @@
             </div>
         </div>
 
-        <footer class="mt-8 text-center text-slate-400 text-xs no-print">
-            <p>Dica pedagógica: Se a letra estiver "tremida", diminua a velocidade. Se estiver bonita mas lenta, tente aumentar a pressão levemente.</p>
+        <footer class="mt-8 text-center text-slate-400 text-xs no-print pb-10">
+            <p>Dica do Vídeo: O segredo está no movimento suave do pulso, não apenas nos dedos.</p>
         </footer>
+
     </div>
 
     <script>
-        function switchWeek(weekNum) {
+        function changeWeek(num) {
             const w1 = document.getElementById('week1');
             const w2 = document.getElementById('week2');
-            const btn1 = document.getElementById('btn-w1');
-            const btn2 = document.getElementById('btn-w2');
+            const b1 = document.getElementById('btn1');
+            const b2 = document.getElementById('btn2');
 
-            if (weekNum === 1) {
+            if(num === 1) {
                 w1.classList.remove('hidden');
                 w2.classList.add('hidden');
-                btn1.className = "px-4 py-2 rounded-md font-bold transition-colors bg-blue-600 text-white border-2 border-blue-600";
-                btn2.className = "px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200";
+                b1.className = "px-4 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md";
+                b2.className = "px-4 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50";
             } else {
                 w2.classList.remove('hidden');
                 w1.classList.add('hidden');
-                btn2.className = "px-4 py-2 rounded-md font-bold transition-colors bg-green-600 text-white border-2 border-green-600";
-                btn1.className = "px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200";
+                b2.className = "px-4 py-2 rounded-full font-bold bg-green-600 text-white shadow-md";
+                b1.className = "px-4 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50";
             }
         }
     </script>
