@@ -6,83 +6,96 @@
     <title>Programa de Caligrafia - 6º Ano</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Homemade+Apple&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
         }
 
-        /* Estilo da Pauta de Caligrafia Ajustada */
+        /* Pauta de Caligrafia Proporcional */
         .pauta-container {
             display: flex;
             flex-direction: column;
-            gap: 15px; 
+            gap: 12px; 
             margin-top: 1rem;
         }
 
         .pauta-linha {
             position: relative;
-            /* Altura total mantida em 48px */
-            /* A zona central foi aumentada em 20% (de ~19% para ~23% da altura total) */
-            height: 48px; 
-            border-top: 2px solid #2563eb; /* Azul para linha superior */
-            border-bottom: 2px solid #2563eb; /* Azul para linha inferior */
+            height: 60px; /* Aumentada a altura total para acomodar o centro maior */
+            border-top: 2px solid #2563eb; /* Azul superior */
+            border-bottom: 2px solid #2563eb; /* Azul inferior */
+            /* Zona central aumentada: Linhas internas cinzas */
             background: linear-gradient(
                 to bottom,
                 transparent 0%,
-                transparent 36.5%,
-                #94a3b8 36.5%,
-                #94a3b8 38.5%,
-                transparent 38.5%,
-                transparent 61.5%,
-                #94a3b8 61.5%,
-                #94a3b8 63.5%,
-                transparent 63.5%
+                transparent 30%,
+                #cbd5e1 30%,
+                #cbd5e1 32%,
+                transparent 32%,
+                transparent 68%,
+                #cbd5e1 68%,
+                #cbd5e1 70%,
+                transparent 70%
             );
             width: 100%;
         }
 
-        /* O marcador "ponto" na zona central */
         .pauta-linha::before {
             content: '•';
             position: absolute;
             left: 8px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 18px;
-            color: #64748b;
+            font-size: 20px;
+            color: #94a3b8;
             font-weight: bold;
         }
 
-        /* Configuração de Impressão */
+        /* Estilo para Letras Pontilhadas (Tracing) */
+        .dotted-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 32px;
+            letter-spacing: 12px;
+            color: #e2e8f0;
+            border-bottom: 1px dashed #cbd5e1;
+            display: inline-block;
+            line-height: 1.5;
+            position: relative;
+            font-weight: 100;
+            text-decoration: underline dotted #94a3b8;
+        }
+
+        .tracing-box {
+            font-family: "Times New Roman", serif;
+            font-size: 38px;
+            color: #d1d5db;
+            letter-spacing: 15px;
+            display: flex;
+            align-items: center;
+            height: 60px;
+            padding-left: 40px;
+            user-select: none;
+        }
+
+        /* Formas educativas (SVG) */
+        .shape-exercise {
+            stroke: #d1d5db;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 4;
+        }
+
         @media print {
-            .no-print {
-                display: none !important;
-            }
-            body {
-                background-color: white;
-                padding: 0;
-            }
-            .container {
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 !important;
-            }
-            .card {
-                box-shadow: none !important;
-                border: none !important;
-                margin-bottom: 30px !important;
-                page-break-inside: avoid;
-            }
-            .pauta-linha {
-                border-top: 2px solid #1e40af !important;
+            .no-print { display: none !important; }
+            body { background-color: white; padding: 0; }
+            .card { box-shadow: none !important; border: 1px solid #eee !important; page-break-inside: avoid; margin-bottom: 20px !important; }
+            .pauta-linha { 
+                border-top: 2px solid #1e40af !important; 
                 border-bottom: 2px solid #1e40af !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
-            }
-            .pauta-linha::before {
-                color: #475569 !important;
             }
         }
     </style>
@@ -91,100 +104,101 @@
 
     <div class="max-w-4xl mx-auto container">
         
-        <!-- Cabeçalho -->
         <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
             <div>
-                <h1 class="text-3xl font-bold text-slate-800">Programa de Caligrafia</h1>
-                <p class="text-slate-600 font-medium">6º Ano | Pauta Azul Ajustada</p>
+                <h1 class="text-3xl font-bold text-slate-800">Treino de Caligrafia Personalizado</h1>
+                <p class="text-slate-600 font-medium">Foco em Coordenação Motora e Traçado (A-F)</p>
             </div>
-            <div class="flex gap-2">
-                <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md transition-all flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 00-2 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                    </svg>
-                    Imprimir Treino
-                </button>
-            </div>
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                </svg>
+                Imprimir Material
+            </button>
         </header>
 
-        <!-- Navegação -->
         <nav class="mb-6 flex gap-4 no-print">
-            <button onclick="switchWeek(1)" id="btn-w1" class="px-4 py-2 rounded-md font-bold transition-colors bg-white text-blue-600 border-2 border-blue-600">Semana 1</button>
-            <button onclick="switchWeek(2)" id="btn-w2" class="px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200">Semana 2</button>
+            <button onclick="switchWeek(1)" id="btn-w1" class="px-4 py-2 rounded-md font-bold transition-colors bg-blue-600 text-white border-2 border-blue-600">Semana 1: Traçado e Base</button>
+            <button onclick="switchWeek(2)" id="btn-w2" class="px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200">Semana 2: Velocidade e Texto</button>
         </nav>
 
-        <!-- Conteúdo das Semanas -->
-        <div id="content">
-            <!-- Semana 1 -->
-            <div id="week1" class="space-y-10">
-                <h2 class="text-2xl font-bold text-blue-800 border-b-2 border-blue-100 pb-2 no-print">Semana 1: Fundamentos e Conexões</h2>
+        <div id="week1" class="space-y-8">
+            <!-- SEÇÃO DE COBRIR LETRAS -->
+            <div class="bg-white p-6 rounded-xl shadow-sm card">
+                <h2 class="text-xl font-bold text-blue-800 mb-4">Parte 1: Cubra as Letras (A até F)</h2>
+                <p class="text-sm text-slate-500 mb-6 italic italic">Instrução: Siga o movimento das setas imaginárias. As maiúsculas tocam a linha azul superior.</p>
                 
-                <div class="bg-white p-6 rounded-xl shadow-sm card">
-                    <h3 class="font-bold text-lg text-slate-800">Segunda-feira: Conexões (Letras Redondas)</h3>
-                    <p class="text-sm text-slate-500 mb-3 italic">Instrução: As letras minúsculas devem ocupar toda a zona central (cinza).</p>
-                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-4 font-serif text-lg leading-relaxed italic">
-                        "O espaço sideral começa a cerca de cem quilômetros acima da Terra. Lá não existe ar para respirar nem para espalhar a luz."
-                    </div>
-                    <div class="pauta-container">
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                    </div>
+                <div class="space-y-2">
+                    <div class="pauta-linha flex items-center"><div class="tracing-box">Aa Aa Aa Aa Aa Aa</div></div>
+                    <div class="pauta-linha flex items-center"><div class="tracing-box">Bb Bb Bb Bb Bb Bb</div></div>
+                    <div class="pauta-linha flex items-center"><div class="tracing-box">Cc Cc Cc Cc Cc Cc</div></div>
+                    <div class="pauta-linha flex items-center"><div class="tracing-box">Dd Dd Dd Dd Dd Dd</div></div>
+                    <div class="pauta-linha flex items-center"><div class="tracing-box">Ee Ee Ee Ee Ee Ee</div></div>
+                    <div class="pauta-linha flex items-center"><div class="tracing-box">Ff Ff Ff Ff Ff Ff</div></div>
                 </div>
+            </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-sm card">
-                    <h3 class="font-bold text-lg text-slate-800">Terça-feira: Hastes e Alturas (l, f, t, b)</h3>
-                    <p class="text-sm text-slate-500 mb-3 italic">Instrução: As hastes devem tocar a linha azul superior para máxima clareza.</p>
-                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-4 font-serif text-lg leading-relaxed italic">
-                        "As girafas são os mamíferos mais altos do mundo. Elas conseguem dormir em pé, mas apenas por curtos períodos de tempo."
+            <!-- FORMAS EDUCATIVAS -->
+            <div class="bg-white p-6 rounded-xl shadow-sm card">
+                <h2 class="text-xl font-bold text-blue-800 mb-4">Parte 2: Aquecimento de Formas (Coordenação)</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-2">Ondas (Base para 'a', 'c', 'd')</p>
+                        <div class="pauta-linha">
+                            <svg width="100%" height="100%" class="shape-exercise">
+                                <path d="M 40 45 Q 60 20 80 45 T 120 45 T 160 45 T 200 45 T 240 45 T 280 45 T 320 45" />
+                            </svg>
+                        </div>
                     </div>
-                    <div class="pauta-container">
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm card" style="page-break-before: always;">
-                    <h3 class="font-bold text-lg text-slate-800">Quarta-feira: Pangramas (Alfabeto Completo)</h3>
-                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-4 font-serif text-lg leading-relaxed italic">
-                        "Blitz prendeu fugitivo que esquivou de xadrez." / "Juiz veta campo de hóquei para a zebra."
-                    </div>
-                    <div class="pauta-container">
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400 uppercase mb-2">Laços Superiores (Base para 'b', 'f')</p>
+                        <div class="pauta-linha">
+                            <svg width="100%" height="100%" class="shape-exercise">
+                                <path d="M 40 40 C 40 10 70 10 70 40 C 70 40 100 10 100 40 C 100 40 130 10 130 40" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Semana 2 -->
-            <div id="week2" class="space-y-10 hidden">
-                <h2 class="text-2xl font-bold text-green-800 border-b-2 border-green-100 pb-2 no-print">Semana 2: Organização e Velocidade</h2>
+            <!-- TEXTO DE APLICAÇÃO -->
+            <div class="bg-white p-6 rounded-xl shadow-sm card page-break">
+                <h2 class="text-xl font-bold text-blue-800 mb-4">Parte 3: Aplicação em Palavras</h2>
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400 mb-6 font-serif text-lg italic">
+                    "Abelha, Baleia, Coelho, Dado, Elefante, Foca."
+                </div>
+                <div class="pauta-container">
+                    <div class="pauta-linha"></div>
+                    <div class="pauta-linha"></div>
+                    <div class="pauta-linha"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semana 2 -->
+        <div id="week2" class="space-y-8 hidden">
+            <div class="bg-white p-6 rounded-xl shadow-sm card">
+                <h2 class="text-xl font-bold text-green-800 mb-4">Semana 2: Fluidez e Rapidez</h2>
+                <p class="text-sm text-slate-500 mb-4 italic italic">Agora que o traçado base está firme, vamos focar em não tirar a caneta do papel.</p>
                 
-                <div class="bg-white p-6 rounded-xl shadow-sm card">
-                    <h3 class="font-bold text-lg text-slate-800">Segunda e Terça: História e Ciências</h3>
-                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-4 font-serif text-lg leading-relaxed italic">
-                        "As civilizações da Mesopotâmia criaram a escrita. A fotossíntese transforma luz do sol em energia vital."
+                <div class="mb-8">
+                    <h3 class="font-bold text-slate-700 mb-2">Desafio de Velocidade (História)</h3>
+                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 font-serif italic text-lg mb-4">
+                        "A escrita cuneiforme foi uma das primeiras do mundo, criada na Mesopotâmia."
                     </div>
                     <div class="pauta-container">
-                        <div class="pauta-linha"></div>
                         <div class="pauta-linha"></div>
                         <div class="pauta-linha"></div>
                         <div class="pauta-linha"></div>
                     </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-sm card" style="page-break-before: always;">
-                    <h3 class="font-bold text-lg text-slate-800">Quarta-feira: Matemática e Números</h3>
-                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 mb-4 font-serif text-lg leading-relaxed italic">
-                        "Contas: 1.250 + 345 = 1.595. / 1.000 ÷ 4 = 250."
+                <div>
+                    <h3 class="font-bold text-slate-700 mb-2">Desafio de Organização (Geografia)</h3>
+                    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 font-serif italic text-lg mb-4">
+                        "O Brasil possui seis grandes biomas: Amazônia, Cerrado, Caatinga, Pantanal, Mata Atlântica e Pampa."
                     </div>
                     <div class="pauta-container">
-                        <div class="pauta-linha"></div>
                         <div class="pauta-linha"></div>
                         <div class="pauta-linha"></div>
                         <div class="pauta-linha"></div>
@@ -193,8 +207,8 @@
             </div>
         </div>
 
-        <footer class="mt-12 text-center text-slate-400 text-sm pb-12 no-print">
-            <p>Dica: O aumento da zona central ajuda a equilibrar o tamanho das vogais.</p>
+        <footer class="mt-8 text-center text-slate-400 text-xs no-print">
+            <p>Dica pedagógica: Se a letra estiver "tremida", diminua a velocidade. Se estiver bonita mas lenta, tente aumentar a pressão levemente.</p>
         </footer>
     </div>
 
@@ -208,12 +222,12 @@
             if (weekNum === 1) {
                 w1.classList.remove('hidden');
                 w2.classList.add('hidden');
-                btn1.className = "px-4 py-2 rounded-md font-bold transition-colors bg-white text-blue-600 border-2 border-blue-600";
+                btn1.className = "px-4 py-2 rounded-md font-bold transition-colors bg-blue-600 text-white border-2 border-blue-600";
                 btn2.className = "px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200";
             } else {
                 w2.classList.remove('hidden');
                 w1.classList.add('hidden');
-                btn2.className = "px-4 py-2 rounded-md font-bold transition-colors bg-white text-green-600 border-2 border-green-600";
+                btn2.className = "px-4 py-2 rounded-md font-bold transition-colors bg-green-600 text-white border-2 border-green-600";
                 btn1.className = "px-4 py-2 rounded-md font-bold transition-colors bg-white text-slate-600 border-2 border-slate-200";
             }
         }
