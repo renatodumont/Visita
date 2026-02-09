@@ -3,92 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treino de Caligrafia Cursiva - 6º Ano</title>
+    <title>Treino de Caligrafia - Letras A-F</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Dancing+Script:wght@400;700&display=swap');
         
+        @font-face {
+            font-family: 'Irineu Brasil';
+            src: local('Irineu Brasil'), local('IrineuBrasil');
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f1f5f9;
+            color: #1e293b;
         }
 
-        .cursiva {
-            font-family: 'Dancing Script', cursive;
+        .caligrafia {
+            font-family: 'Irineu Brasil', 'Dancing Script', cursive;
         }
 
-        /* Configuração da Pauta conforme solicitado */
         .pauta-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .pauta-linha {
+        .pauta-bloco {
             position: relative;
-            height: 85px; /* Altura total para acomodar a zona central grande */
-            border-top: 2.5px solid #1d4ed8; /* Linha Superior Azul */
-            border-bottom: 2.5px solid #1d4ed8; /* Linha Inferior Azul */
-            /* Zona central ampliada (ocupando aprox. 60% da área) */
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                transparent 20%,
-                #94a3b8 20%,
-                #94a3b8 22%,
-                transparent 22%,
-                transparent 78%,
-                #94a3b8 78%,
-                #94a3b8 80%,
-                transparent 80%
-            );
+            height: 100px; 
             width: 100%;
-            display: flex;
-            align-items: center;
+            background: 
+                linear-gradient(to bottom, #2563eb 2px, transparent 2px) 0 0,    
+                linear-gradient(to bottom, #94a3b8 1.5px, transparent 1.5px) 0 30px, 
+                linear-gradient(to bottom, #94a3b8 1.5px, transparent 1.5px) 0 70px, 
+                linear-gradient(to bottom, #2563eb 2px, transparent 2px) 0 100px;  
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            border-bottom: 2px solid #2563eb; 
         }
 
-        /* Marcador de ponto central */
-        .pauta-linha::before {
+        .pauta-bloco::before {
             content: '•';
             position: absolute;
-            left: 8px;
-            top: 50%;
+            left: 10px;
+            top: 50px;
             transform: translateY(-50%);
             font-size: 24px;
-            color: #64748b;
+            color: #94a3b8;
             font-weight: bold;
         }
 
-        /* Estilo para as letras pontilhadas de cobrir */
-        .pontilhado {
-            font-family: 'Dancing Script', cursive;
-            font-size: 52px;
-            color: #e2e8f0; /* Cor clara para ser coberta */
-            letter-spacing: 14px;
-            padding-left: 45px;
-            line-height: 1;
-            user-select: none;
-            font-weight: 400;
+        .tracing-overlay {
+            position: absolute;
+            top: 0;
+            left: 50px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            font-family: 'Irineu Brasil', 'Dancing Script', cursive;
+            font-size: 60px; 
+            color: #e2e8f0; 
+            letter-spacing: 15px;
+            line-height: 100px;
+            pointer-events: none;
+            white-space: nowrap;
         }
 
-        /* Estilo para os exercícios do vídeo */
-        .pattern-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 42px;
-            color: #94a3b8;
-            opacity: 0.6;
-            letter-spacing: 2px;
-            padding-left: 45px;
+        .pattern-overlay {
+            color: #cbd5e1;
+            opacity: 0.7;
         }
 
         @media print {
             .no-print { display: none !important; }
             body { background-color: white; padding: 0; }
-            .card { box-shadow: none !important; border: 1px solid #eee !important; page-break-inside: avoid; margin-bottom: 15px !important; }
-            .pauta-linha { 
-                border-top: 2.5px solid #1d4ed8 !important; 
-                border-bottom: 2.5px solid #1d4ed8 !important;
+            .card { 
+                box-shadow: none !important; 
+                border: 1px solid #eee !important; 
+                page-break-inside: avoid; 
+                margin-bottom: 20px !important;
+            }
+            .pauta-bloco {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -99,129 +96,104 @@
 
     <div class="max-w-4xl mx-auto">
         
-        <!-- Cabeçalho de Navegação -->
-        <header class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
+        <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 no-print">
             <div>
-                <h1 class="text-2xl font-bold text-slate-800">Treino de Caligrafia Cursiva</h1>
-                <p class="text-slate-500">Inspirado em técnicas de fluidez e ritmo motor</p>
+                <h1 class="text-3xl font-bold text-slate-800 italic">Caligrafia: Nível Inicial (A-F)</h1>
+                <p class="text-slate-500 font-medium">Foco no traçado base e controlo de pauta - 6º Ano</p>
             </div>
-            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg flex items-center gap-2 transition-all active:scale-95">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                 </svg>
-                Imprimir Fichas
+                Imprimir Material
             </button>
         </header>
 
-        <nav class="mb-6 flex gap-3 no-print">
-            <button onclick="changeWeek(1)" id="btn1" class="px-4 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md">Semana 1: Traçado e Ritmo</button>
-            <button onclick="changeWeek(2)" id="btn2" class="px-4 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">Semana 2: Fluidez de Texto</button>
+        <nav class="mb-8 flex gap-4 no-print">
+            <button onclick="switchTab(1)" id="t1" class="px-6 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md">Semana 1: Traçado A-F</button>
+            <button onclick="switchTab(2)" id="t2" class="px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200">Semana 2: Fluidez com A-F</button>
         </nav>
 
-        <!-- CONTEÚDO SEMANA 1 -->
-        <div id="week1" class="space-y-6">
-            
-            <!-- PARTE 1: ALFABETO PONTILHADO -->
+        <div id="week1" class="space-y-8">
             <div class="bg-white p-6 rounded-2xl shadow-sm card">
-                <h2 class="text-lg font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-3">1. Cobrir Letras Cursivas (A até F)</h2>
-                <p class="text-sm text-slate-400 mb-4 italic">Foca na zona do ponto central. Letras maiúsculas tocam a linha azul superior.</p>
-                <div class="space-y-1">
-                    <div class="pauta-linha"><div class="pontilhado">Aa Aa Aa Aa Aa</div></div>
-                    <div class="pauta-linha"><div class="pontilhado">Bb Bb Bb Bb Bb</div></div>
-                    <div class="pauta-linha"><div class="pontilhado">Cc Cc Cc Cc Cc</div></div>
-                    <div class="pauta-linha"><div class="pontilhado">Dd Dd Dd Dd Dd</div></div>
-                    <div class="pauta-linha"><div class="pontilhado">Ee Ee Ee Ee Ee</div></div>
-                    <div class="pauta-linha"><div class="pontilhado">Ff Ff Ff Ff Ff</div></div>
-                </div>
-            </div>
-
-            <!-- PARTE 2: EXERCÍCIOS DE RITMO (DO VÍDEO) -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm card page-break">
-                <h2 class="text-lg font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-3">2. Padrões de Fluidez (Inspirado no Vídeo)</h2>
-                <p class="text-sm text-slate-400 mb-4 italic">Faz o movimento sem parar a mão. Imagina que a caneta está a dançar.</p>
+                <h2 class="text-xl font-bold text-blue-800 mb-2">1. Alfabeto Cursivo Pontilhado (Aa - Ff)</h2>
+                <p class="text-sm text-slate-500 mb-6 italic">Instrução: Minúsculas entre as linhas cinzentas. Hastes (b, d, f) no azul superior. Cauda (f) no azul inferior.</p>
                 
-                <div class="space-y-1">
-                    <div class="pauta-linha"><div class="pattern-text">a - oooooooooooo</div></div>
-                    <div class="pauta-linha"><div class="pattern-text">b - llllllllllll</div></div>
-                    <div class="pauta-linha"><div class="pattern-text">c - cccccccccccc</div></div>
-                    <div class="pauta-linha"><div class="pattern-text">d - oooooooooooo</div></div>
-                    <div class="pauta-linha"><div class="pattern-text">f - ffffffffffff</div></div>
+                <div class="space-y-4">
+                    <div class="pauta-bloco"><div class="tracing-overlay">Aa Aa Aa Aa Aa Aa</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay">Bb Bb Bb Bb Bb Bb</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay">Cc Cc Cc Cc Cc Cc</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay">Dd Dd Dd Dd Dd Dd</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay">Ee Ee Ee Ee Ee Ee</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay">Ff Ff Ff Ff Ff Ff</div></div>
                 </div>
             </div>
 
-            <!-- PARTE 3: FORMAS EDUCATIVAS -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm card">
-                <h2 class="text-lg font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-3">3. Aquecimento Motor</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="pauta-linha">
-                        <svg width="100%" height="100%" class="opacity-30 stroke-slate-600" style="stroke-width: 2; fill: none; stroke-dasharray: 4;">
-                            <path d="M 50 65 Q 70 25 90 65 T 130 65 T 170 65 T 210 65 T 250 65" />
-                        </svg>
-                    </div>
-                    <div class="pauta-linha">
-                        <svg width="100%" height="100%" class="opacity-30 stroke-slate-600" style="stroke-width: 2; fill: none; stroke-dasharray: 4;">
-                            <path d="M 50 65 C 50 15 90 15 90 65 S 130 15 130 65 S 170 15 170 65" />
-                        </svg>
-                    </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm card page-break">
+                <h2 class="text-xl font-bold text-blue-800 mb-2 border-l-4 border-blue-600 pl-4">2. Exercícios Rítmicos (Padrão Infinito)</h2>
+                <p class="text-sm text-slate-500 mb-6 italic">Foca na fluidez do movimento circular e ascendente das letras A até F.</p>
+                
+                <div class="space-y-4">
+                    <div class="pauta-bloco"><div class="tracing-overlay pattern-overlay">a ooooooo</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay pattern-overlay">b llllllll</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay pattern-overlay">c cccccccc</div></div>
+                    <div class="pauta-bloco"><div class="tracing-overlay pattern-overlay">f ffffffff</div></div>
                 </div>
             </div>
         </div>
 
-        <!-- CONTEÚDO SEMANA 2 -->
-        <div id="week2" class="space-y-6 hidden">
+        <div id="week2" class="space-y-8 hidden">
             <div class="bg-white p-6 rounded-2xl shadow-sm card">
-                <h2 class="text-lg font-bold text-green-800 mb-2 border-l-4 border-green-600 pl-3">Semana 2: Aplicação e Velocidade</h2>
-                <p class="text-sm text-slate-400 mb-6 italic">Agora vamos escrever frases completas sem tirar a caneta do papel entre as letras de cada palavra.</p>
-
+                <h2 class="text-xl font-bold text-green-800 mb-4">Semana 2: Palavras com Letras Iniciais</h2>
+                
                 <div class="mb-10">
-                    <h3 class="font-bold text-slate-700 mb-3">História: Escrita Cuneiforme</h3>
-                    <div class="bg-green-50 p-4 rounded-xl cursiva text-3xl text-slate-700 mb-4 opacity-70">
-                        A escrita cursiva aumenta a velocidade de pensamento.
+                    <h3 class="font-bold text-slate-700 mb-2">Controlo de Hastes (Céu Azul)</h3>
+                    <div class="bg-green-50 p-6 rounded-xl caligrafia text-4xl text-slate-600 mb-4 opacity-80">
+                        A fada e a faca de café.
                     </div>
                     <div class="pauta-container">
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
+                        <div class="pauta-bloco"></div>
+                        <div class="pauta-bloco"></div>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="font-bold text-slate-700 mb-3">Geografia: Biomas do Brasil</h3>
-                    <div class="bg-green-50 p-4 rounded-xl cursiva text-3xl text-slate-700 mb-4 opacity-70">
-                        A Amazónia é o maior bioma brasileiro.
+                    <h3 class="font-bold text-slate-700 mb-2">Controlo de Cauda e Ligações</h3>
+                    <div class="bg-green-50 p-6 rounded-xl caligrafia text-4xl text-slate-600 mb-4 opacity-80">
+                        Cada face da faca afiada.
                     </div>
                     <div class="pauta-container">
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
-                        <div class="pauta-linha"></div>
+                        <div class="pauta-bloco"></div>
+                        <div class="pauta-bloco"></div>
+                        <div class="pauta-bloco"></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <footer class="mt-8 text-center text-slate-400 text-xs no-print pb-10">
-            <p>Dica do Vídeo: O segredo está no movimento suave do pulso, não apenas nos dedos.</p>
+            <p>Dica: Domine primeiro o grupo A-F antes de avançar para as letras seguintes.</p>
         </footer>
 
     </div>
 
     <script>
-        function changeWeek(num) {
+        function switchTab(n) {
             const w1 = document.getElementById('week1');
             const w2 = document.getElementById('week2');
-            const b1 = document.getElementById('btn1');
-            const b2 = document.getElementById('btn2');
+            const t1 = document.getElementById('t1');
+            const t2 = document.getElementById('t2');
 
-            if(num === 1) {
+            if(n === 1) {
                 w1.classList.remove('hidden');
                 w2.classList.add('hidden');
-                b1.className = "px-4 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md";
-                b2.className = "px-4 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50";
+                t1.className = "px-6 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md";
+                t2.className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200";
             } else {
                 w2.classList.remove('hidden');
                 w1.classList.add('hidden');
-                b2.className = "px-4 py-2 rounded-full font-bold bg-green-600 text-white shadow-md";
-                b1.className = "px-4 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50";
+                t2.className = "px-6 py-2 rounded-full font-bold bg-green-600 text-white shadow-md";
+                t1.className = "px-6 py-2 rounded-full font-bold bg-white text-slate-600 border border-slate-200";
             }
         }
     </script>
